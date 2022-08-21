@@ -1,0 +1,255 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scenes/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://fonts/e-Ukraine/e-Ukraine-Medium.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://icons/back-white.svg" type="Texture" id=3]
+[ext_resource path="res://scenes/NewNote.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=5]
+size = 36
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+content_margin_left = 25.0
+content_margin_right = 25.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+content_margin_left = 25.0
+content_margin_right = 25.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="DynamicFont" id=7]
+size = 20
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+content_margin_left = 25.0
+content_margin_right = 25.0
+content_margin_top = 25.0
+content_margin_bottom = 25.0
+bg_color = Color( 0.14902, 0.14902, 0.14902, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="DynamicFont" id=9]
+size = 20
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 17
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 15
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 15
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="NewNote" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 10
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Control" type="Control" parent="VBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 11.0
+margin_right = -30.0
+
+[node name="BackButton" type="Button" parent="VBoxContainer/Control/Control"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -19.5
+margin_right = 137.0
+margin_bottom = 19.5
+mouse_default_cursor_shape = 2
+theme = ExtResource( 1 )
+text = "Назад"
+icon = ExtResource( 3 )
+expand_icon = true
+
+[node name="SaveButton" type="Button" parent="VBoxContainer/Control/Control"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -125.0
+margin_top = -19.5
+margin_bottom = 19.5
+mouse_default_cursor_shape = 2
+theme = ExtResource( 1 )
+text = "Зберегти"
+expand_icon = true
+
+[node name="Control2" type="Control" parent="VBoxContainer"]
+margin_top = 60.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Control2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Control2/ScrollContainer"]
+margin_right = 1024.0
+margin_bottom = 540.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="VBoxContainer/Control2/ScrollContainer/HBoxContainer"]
+margin_right = 150.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 150, 0 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control2/ScrollContainer/HBoxContainer"]
+margin_left = 154.0
+margin_right = 870.0
+margin_bottom = 540.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Control2/ScrollContainer/HBoxContainer/VBoxContainer"]
+visible = false
+margin_right = 716.0
+margin_bottom = 65.0
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+custom_fonts/font = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+autowrap = true
+
+[node name="title" type="LineEdit" parent="VBoxContainer/Control2/ScrollContainer/HBoxContainer/VBoxContainer"]
+margin_right = 716.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 0, 65 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/read_only = SubResource( 6 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/normal = SubResource( 6 )
+placeholder_text = "Заголовок"
+caret_blink = true
+
+[node name="content" type="TextEdit" parent="VBoxContainer/Control2/ScrollContainer/HBoxContainer/VBoxContainer"]
+margin_top = 69.0
+margin_right = 716.0
+margin_bottom = 540.0
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0.552941, 0.552941, 0.552941, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/read_only = SubResource( 6 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/normal = SubResource( 6 )
+text = "Напишіть що небудь..."
+caret_blink = true
+
+[node name="Control2" type="Control" parent="VBoxContainer/Control2/ScrollContainer/HBoxContainer"]
+margin_left = 874.0
+margin_right = 1024.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 150, 0 )
+
+[node name="Popup" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.192157, 0.192157, 0.192157, 0.898039 )
+
+[node name="PanelContainer" type="PanelContainer" parent="Popup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -189.5
+margin_top = -75.5
+margin_right = 189.5
+margin_bottom = 75.5
+custom_styles/panel = SubResource( 8 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup/PanelContainer"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 354.0
+margin_bottom = 126.0
+custom_constants/separation = 25
+
+[node name="Control" type="VBoxContainer" parent="Popup/PanelContainer/VBoxContainer"]
+margin_right = 329.0
+margin_bottom = 51.0
+
+[node name="Label" type="Label" parent="Popup/PanelContainer/VBoxContainer/Control"]
+margin_right = 329.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 9 )
+text = "Ви не зберегли вашу замітку"
+align = 1
+
+[node name="Label2" type="Label" parent="Popup/PanelContainer/VBoxContainer/Control"]
+margin_top = 29.0
+margin_right = 329.0
+margin_bottom = 51.0
+custom_fonts/font = SubResource( 10 )
+text = "Вийти?"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Popup/PanelContainer/VBoxContainer"]
+margin_top = 76.0
+margin_right = 329.0
+margin_bottom = 101.0
+custom_constants/separation = 74
+
+[node name="StayButton" type="Button" parent="Popup/PanelContainer/VBoxContainer/HBoxContainer"]
+margin_right = 127.0
+margin_bottom = 25.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 11 )
+text = "Залишитися"
+
+[node name="LeaveButton" type="Button" parent="Popup/PanelContainer/VBoxContainer/HBoxContainer"]
+margin_left = 201.0
+margin_right = 329.0
+margin_bottom = 25.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 12 )
+text = "Вийти"
+
+[connection signal="pressed" from="VBoxContainer/Control/Control/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/Control/SaveButton" to="." method="_on_SaveButton_pressed"]
+[connection signal="gui_input" from="VBoxContainer/Control2/ScrollContainer/HBoxContainer/VBoxContainer/Label" to="." method="_on_Label_gui_input"]
+[connection signal="focus_exited" from="VBoxContainer/Control2/ScrollContainer/HBoxContainer/VBoxContainer/title" to="." method="_on_title_focus_exited"]
+[connection signal="focus_entered" from="VBoxContainer/Control2/ScrollContainer/HBoxContainer/VBoxContainer/content" to="." method="_on_content_focus_entered"]
+[connection signal="focus_exited" from="VBoxContainer/Control2/ScrollContainer/HBoxContainer/VBoxContainer/content" to="." method="_on_content_focus_exited"]
+[connection signal="pressed" from="Popup/PanelContainer/VBoxContainer/HBoxContainer/StayButton" to="." method="_on_StayButton_pressed"]
+[connection signal="pressed" from="Popup/PanelContainer/VBoxContainer/HBoxContainer/LeaveButton" to="." method="_on_LeaveButton_pressed"]
